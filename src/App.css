@@ -1,0 +1,568 @@
+/* reset */
+label {
+  margin: 0;
+}
+
+/* colors
+orange light: #FD552F - 253, 85, 47
+orange dark: #FD7D5D - 253, 125, 93
+blue: #2624B3 - 38, 36, 179
+*/
+
+
+/********************************************************  App.js  */
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+
+}
+
+.App {
+  background-image: url('imgs/bkg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/******************************************************************************/
+
+
+/********************************************************  Loading.js  */
+.loadingPage {
+  background-color: black;
+  height: calc(100vh - 142px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingPop {
+  border: solid 3px rgb(253, 85, 47);
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: white;
+}
+
+.loading {
+  text-align: center;
+  color: darkblue;
+}
+
+/******************************************************************************/
+
+/********************************************************  NavBar.js  */
+
+.navBarWrapper {
+  position: relative;
+  z-index: 150;
+  background: rgb(253, 85, 47);
+  background: linear-gradient(48deg, rgba(253, 85, 47, 1) 0%, rgba(253, 125, 93, 1) 100%);
+}
+
+.navBarWrapper .navBar {
+  /* width: 100%; */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navBarWrapper .navBar li a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 15px;
+  line-height: 50px;
+}
+
+/******************************************************************************/
+
+/********************************************************  Map.js  */
+
+.mapWrapper {
+  height: calc(100vh - 142px);
+}
+
+.leaflet-container {
+  height: 100%;
+  /* height: 90%; */
+  /* border: solid 5px #fd552f; */
+  z-index: 0;
+}
+
+.leaflet-popup-content {
+  max-width: 240px;
+  max-height: 240px;
+  overflow-y: scroll;
+}
+
+/******************************************************************************/
+
+
+/********************************************************  SearchBar.js  */
+.searchContainer {
+  height: calc(100vh - 189px);
+}
+
+.central-container {
+  display: flex;
+  justify-content: center;
+  margin: 3rem;
+}
+
+.central-container .brandingContainer {
+  background-color: white;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.central-container .branding {
+  background: #FD552F;
+  background: linear-gradient(48deg, rgba(253, 85, 47, 1) 0%, rgba(253, 125, 93, 1) 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  padding: 1rem;
+
+  border-radius: 5px 0 0 5px;
+}
+
+.central-container .branding h1 {
+  display: none;
+  text-align: center;
+  color: white;
+}
+
+.central-container .branding .logo {
+  background-image: url('imgs/logo_v.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.central-container .searchBar {
+  background-color: white;
+  border-radius: 0 5px 5px 0;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.central-container .searchBar .searchBar-top {}
+
+.searchBar-top input[type="text"] {
+  border: solid 2px #fd552f;
+}
+
+.central-container .searchBar .searchBar-top .input-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.central-container .searchBar .searchBar-top .input-row label {
+  flex: 3;
+}
+
+.central-container .searchBar .searchBar-top .input-row input,
+.central-container .searchBar .searchBar-top .input-row select {
+  flex: 1;
+}
+
+.central-container .actions-container {
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+}
+
+
+#buffer {
+  /* max-width: 100px; */
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  margin: 10px 5px;
+  text-transform: uppercase;
+}
+
+button .select {}
+
+.attraction {
+  border: solid 2px #fd552f;
+  color: #fd552f;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.attraction:hover {
+  border: solid 2px #fd552f;
+  background-color: #fd552f;
+  color: white;
+  transition: all 0.3s;
+}
+
+#time,
+#buffer {
+  border: solid 2px #fd552f;
+  background-color: white;
+}
+
+.btn .btn-primary,
+#search,
+#newSearch,
+#save {
+  cursor: pointer;
+  border: solid 2px #fd552f;
+  background-color: white;
+  color: #fd552f;
+  transition: all 0.2s;
+}
+
+#search:hover,
+#newSearch:hover,
+#save:hover,
+.attraction.active {
+  border: solid 2px #fd552f;
+  background-color: #fd552f;
+  color: white;
+  transition: all 0.2s;
+}
+
+
+/******************************************************************************/
+
+h1.title {
+
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.routeInfo {
+  position: absolute;
+  /* left: -30%; */
+  z-index: 100;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  /* -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); */
+  width: 40%;
+  /* height: 100%; */
+  height: calc(100vh - 142px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 0.5s;
+}
+
+.routeInfo.active {
+  transform: translate(-100%);
+  transition: 0.5s;
+  z-index: 1 !important;
+}
+
+.routeInfoContent {
+  padding: 65px 100px 65px 50px;
+}
+
+.info,
+.infoDistance,
+.infoTime {
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+.infoTime {
+  border-bottom: 1px solid rgb(253, 85, 47);
+  ;
+}
+
+.infoVisiting {
+  font-weight: bold;
+}
+
+.routeInfo ul {
+  list-style: decimal;
+  padding-left: 0;
+}
+
+.menu__toggler {
+  background: rgba(250, 250, 250, 0.9);
+  border-top: 1px solid rgba(253, 85, 47, 0.5);
+  border-right: 1px solid rgba(253, 85, 47, 0.5);
+  border-bottom: 1px solid rgba(253, 85, 47, 0.5);
+  position: absolute;
+  /* top: 50%; */
+  right: -34px;
+  z-index: 100;
+  height: 34px;
+  width: 34px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 0 3px 3px 0;
+}
+
+.menu__toggler span
+
+/* .menu__toggler span::before,
+.menu__toggler span::after */
+  {
+  position: absolute;
+}
+
+.chevron::before {
+  border-style: solid;
+  border-width: 0.25em 0.25em 0 0;
+  content: '';
+  display: inline-block;
+  height: 7px;
+  left: 10px;
+  position: relative;
+  top: 4px;
+  transform: rotate(-45deg);
+  vertical-align: top;
+  width: 0.45em;
+}
+
+.chevron.right:before {
+  left: 8px;
+  transform: rotate(45deg);
+}
+
+.chevron.bottom:before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+.chevron.left:before {
+  left: 10px;
+  transform: rotate(-135deg);
+}
+
+/*
+.menu__toggler span::before {
+  top: -8px;
+  transform: rotate(45deg);
+}
+
+.menu__toggler span::after {
+  top: 8px;
+  transform: rotate(145deg);
+}
+
+.menu__toggler.active>span {
+  background: transparent;
+}
+*/
+
+.menu__toggler.active>span::before {
+  transform: rotate(-225deg);
+}
+
+.menu__toggler.active>span::after {
+  transform: rotate(225deg);
+}
+
+
+/********************************************************  Footer.js  */
+footer {
+
+  /* display: none; */
+  padding: 1rem;
+  font-size: 0.8em;
+  background: #FD552F;
+  background: linear-gradient(48deg, rgba(253, 85, 47, 1) 0%, rgba(253, 125, 93, 1) 100%);
+  color: white;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+footer a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/******************************************************************************/
+
+.tripContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-auto-flow: row;
+  background-color: white;
+  height: 100%;
+}
+
+.trip {
+  text-align: center;
+  margin: 1rem;
+  border-radius: 5px;
+  border: solid 3px #FD552F;
+}
+
+.trip h3 {
+  margin: 0;
+  padding: 1rem;
+}
+
+.popupImg {
+  height: 130px;
+  width: auto;
+  margin: auto;
+}
+
+.editPrivacy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3,
+.margin {
+  margin: 2rem;
+  padding: 2rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+.googleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 50px;
+  background: #4385f4;
+  position: relative;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.googleContainer img {
+  width: 12.5%;
+  height: 100%;
+  object-fit: contain;
+  left: 10px;
+  border-radius: 3px;
+  position: absolute;
+}
+
+.githubContainer {
+  background: rgb(56, 56, 56);
+}
+
+.loginPage {
+  width: 100vw;
+  height: calc(100vh - 142px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginForm {
+  background-color: white;
+  text-align: center;
+  padding: 15px;
+
+
+}
+
+
+/*     MEDIA QUERIES    */
+@media (max-width: 991px) {
+  .central-container {
+    flex-flow: column;
+  }
+
+  .central-container .brandingContainer {
+    width: 100%;
+    height: 150px;
+  }
+
+  .central-container .brandingContainer .branding {
+    clip-path: none;
+  }
+
+  .central-container .branding .logo {
+    background-image: url('imgs/logo_h.png') !important;
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 100%;
+    height: 125px;
+  }
+
+  .central-container .searchBar {
+    justify-content: center;
+  }
+
+  .routeInfo {
+    width: 45%;
+  }
+
+  .tripContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .routeInfo {
+    position: absolute;
+    z-index: 100;
+    color: #005c9c;
+    background: rgba(250, 250, 250, 0.7);
+    width: 100%;
+    height: 75%;
+    top: 50px;
+    transition: 0.5s;
+  }
+
+  .tripContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .menu__toggler {
+    bottom: -34px;
+    right: 45%;
+    border-radius: 0 0 3px 3px;
+    padding-left: 5px;
+    border-top: none;
+    border-left: 1px solid rgba(253, 85, 47, 0.5);
+    border-right: 1px solid rgba(253, 85, 47, 0.5);
+    border-bottom: 1px solid rgba(253, 85, 47, 0.5);
+  }
+
+  .routeInfo.active {
+    transform: translateY(-100%);
+    transition: 0.5s;
+  }
+
+  .chevron.left:before {
+    left: 10px;
+    transform: rotate(-45deg);
+  }
+
+  .chevron.right:before {
+    left: 8px;
+    transform: rotate(135deg);
+  }
+
+}
+
+@media (max-width: 767px) {}
